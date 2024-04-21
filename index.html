@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="task1">
+        <form action="" method="post" id="form1">
+          <ul>
+            <li>
+              <label
+                >Name
+                <input
+                  type="text"
+                  id="name"
+                  minlength="2"
+                  required
+                  class="formElement" /></label
+              ><span class="errorMessage" id="reportName"></span>
+            </li>
+            <li>
+              <label
+                >Email:
+                <input
+                  type="email"
+                  name="email"
+                  id="mail"
+                  class="formElement"
+                  minlength="3"
+                  required /></label
+              ><span class="errorMessage" id="reportMail"></span>
+            </li>
+            <li>
+              <label
+                >Password
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  class="formElement"
+                  minlength="8"
+                  maxlength="20"
+                  required
+                /> </label
+              ><span class="errorMessage" id="reportPassword"></span>
+            </li>
+            <li>
+              <label
+                >Яка сьогодні погода?
+                <input
+                  type="text"
+                  name=""
+                  id="weather"
+                  class="formElement"
+                  required /></label
+              ><span class="errorMessage" id="reportWeather"></span>
+            </li>
+            <li>
+              <label
+                >Виключити всі електронні прибори при візході з дому
+                <input
+                  type="checkbox"
+                  name=""
+                  id="electricity"
+                  class="formElement"
+                  required /></label
+              ><span class="errorMessage" id="reportElectricity" c></span>
+            </li>
+            <li class="button-block">
+              <button type="submit" id="submitBtn">Send</button>
+              <button id="validateBtn">Validate</button>
+            </li>
+          </ul>
+        </form>
+      </div>
+      <div class="task2">
+        <li class="listItem">
+          <input type="checkbox" class="DoneCheckbox" />
+          <span class="TodoText">{add text}</span>
+          <button>Remove</button>
+        </li>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
