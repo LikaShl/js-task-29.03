@@ -83,26 +83,33 @@ changeValidityText();
 // - Додати новий елемент
 //  - Видалити елемент
 //  - Задати що пункт виконано
-
-let addNewTaskBtn = document.getElementById(addNewTaskBtn);
-addNewTaskBtn.addEventListener("click", function addNewTask() {
-  let todoList = document.getElementById("todoList");
-  let newTask = document.createElement("li");
-  document.todoList.appendChild(newTask);
-  let checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.class = "DoneCheckbox";
-  document.newTask.appendChild(checkbox);
-  let todoText = document.createElement("span");
-  todoText.class = "todoText";
-  document.newTask.appendChild(todoText);
-  let newTaskAdd = document.getElementById(newTaskAdd);
-  todoText.innerText = newTaskAdd.value;
-});
-
 // Методи:
 // document.createElement,
 // el.appendChild
+
+let addNewTaskBtn = document.getElementById("addNewTaskBtn");
+addNewTaskBtn.addEventListener("click", function addNewTask() {
+  let todoList = document.getElementById("todoList");
+  let newTask = document.createElement("li");
+  todoList.appendChild(newTask);
+  let checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.class = "DoneCheckbox";
+  newTask.appendChild(checkbox);
+  let todoText = document.createElement("span");
+  todoText.class = "todoText";
+  newTask.appendChild(todoText);
+  let newTaskAdd = document.getElementById("newTaskAdd");
+
+  todoText.innerText = ` ${newTaskAdd.value} `;
+  let removeButton = document.createElement("button");
+  removeButton.class = "removeBtn";
+  removeButton.innerText = "Remove";
+  newTask.appendChild(removeButton);
+});
+
+let removeTaskBtn = document.getElementsByClassName("removeBtn");
+removeTaskBtn.addEventListener("click", function removeTask() {});
 
 // if (username.value == "") {
 //   username.setCustomValidity("Як тебе звати?");
