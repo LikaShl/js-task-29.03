@@ -84,15 +84,24 @@ changeValidityText();
 //  - Видалити елемент
 //  - Задати що пункт виконано
 
-//        Елемент шаблону:
-//           <li class="listItem">
-//               <input type="checkbox" class="DoneCheckbox" />
-//               <span class="TodoText">{add text}</span>
-//              <button>Remove</button>
-//           </li>
+let addNewTaskBtn = document.getElementById(addNewTaskBtn);
+addNewTaskBtn.addEventListener("click", function addNewTask() {
+  let todoList = document.getElementById("todoList");
+  let newTask = document.createElement("li");
+  document.todoList.appendChild(newTask);
+  let checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.class = "DoneCheckbox";
+  document.newTask.appendChild(checkbox);
+  let todoText = document.createElement("span");
+  todoText.class = "todoText";
+  document.newTask.appendChild(todoText);
+  let newTaskAdd = document.getElementById(newTaskAdd);
+  todoText.innerText = newTaskAdd.value;
+});
 
 // Методи:
-// document.createelement,
+// document.createElement,
 // el.appendChild
 
 // if (username.value == "") {
