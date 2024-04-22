@@ -88,28 +88,32 @@ changeValidityText();
 // el.appendChild
 
 let addNewTaskBtn = document.getElementById("addNewTaskBtn");
-addNewTaskBtn.addEventListener("click", function addNewTask() {
+addNewTaskBtn.addEventListener("click", function () {
   let todoList = document.getElementById("todoList");
   let newTask = document.createElement("li");
   todoList.appendChild(newTask);
   let checkbox = document.createElement("input");
   checkbox.type = "checkbox";
-  checkbox.class = "DoneCheckbox";
   newTask.appendChild(checkbox);
   let todoText = document.createElement("span");
-  todoText.class = "todoText";
   newTask.appendChild(todoText);
   let newTaskAdd = document.getElementById("newTaskAdd");
-
   todoText.innerText = ` ${newTaskAdd.value} `;
-  let removeButton = document.createElement("button");
-  removeButton.class = "removeBtn";
-  removeButton.innerText = "Remove";
-  newTask.appendChild(removeButton);
-});
+  let removeBtn = document.createElement("button");
+  removeBtn.innerText = "Remove";
+  newTask.appendChild(removeBtn);
+  newTaskAdd.value = "";
 
-let removeTaskBtn = document.getElementsByClassName("removeBtn");
-removeTaskBtn.addEventListener("click", function removeTask() {});
+  removeBtn.addEventListener("click", function () {
+    removeBtn.parentElement.remove();
+  });
+
+  checkbox.addEventListener("change", function () {
+    if (checkbox.checked) {
+      todoText.style.textDecoration = "line-through";
+    }
+  });
+});
 
 // if (username.value == "") {
 //   username.setCustomValidity("Як тебе звати?");
