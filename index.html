@@ -10,6 +10,7 @@
     <div class="container">
       <div class="task1">
         <form action="" method="post" id="form1">
+          <h2>Form</h2>
           <ul>
             <li>
               <label
@@ -71,15 +72,15 @@
               ><span class="errorMessage" id="reportElectricity" c></span>
             </li>
             <li class="button-block">
-              <button type="submit" id="submitBtn">Send</button>
-              <button id="validateBtn">Validate</button>
+              <button type="submit" id="submitBtn" disabled>Send</button>
+              <button type="submit" id="validateBtn">Validate</button>
             </li>
           </ul>
         </form>
       </div>
       <div class="task2">
         <h2>Task list</h2>
-        <ul id="todoList"></ul>
+        <ul id="todoList" class="todoList"></ul>
         <input type="text" id="newTaskAdd" /><button
           type="submit"
           id="addNewTaskBtn"
@@ -89,5 +90,6 @@
       </div>
     </div>
     <script src="script.js"></script>
+    <script src="script2.js"></script>
   </body>
 </html>

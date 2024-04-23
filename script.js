@@ -27,10 +27,9 @@
 // Та ін
 
 const validateBtn = document.getElementById("validateBtn");
-const submitBTN = document.getElementById("submitBtn");
+const submitBtn = document.getElementById("submitBtn");
 let formElements = document.getElementsByClassName("formElement");
 let errorMessages = document.getElementsByClassName("errorMessage");
-let isNotValid = "";
 let errorText = [
   " Як тебе звати?",
   " Невірна пошта.",
@@ -38,22 +37,22 @@ let errorText = [
   " Так яка ж погода?",
 ];
 
-function changeValidityText() {
+function addCustomValidityText() {
   for (let i = 0; i < formElements.length; i++) {
-    if (formElements[i].value == isNotValid) {
+    if (formElements[i].validity.valueMissing) {
       formElements[i].setCustomValidity(errorText[i]);
+      console.log(formElements[i].value);
+      console.log("validity");
     } else {
       formElements[i].setCustomValidity("");
     }
-    formElements[i].reportValidity();
-  }
-  if (electricity.checked == false) {
-    electricity.setCustomValidity(" Не забудь!");
-  } else {
-    electricity.setCustomValidity("");
+    if (!electricity.checked) {
+      electricity.setCustomValidity(" Не забудь!");
+    } else {
+      electricity.setCustomValidity("");
+    }
   }
 }
-
 function cleanReport() {
   for (let i = 0; i < errorMessages.length; i++) {
     errorMessages[i].innerText = "";
@@ -61,60 +60,42 @@ function cleanReport() {
 }
 function checkForm() {
   for (let i = 0; i < formElements.length; i++) {
-    if (formElements[i].value == isNotValid) {
+    if (formElements[i].value === "") {
       errorMessages[i].innerText = errorText[i];
+      errorMessages[i].style.color = "red";
+    } else {
+      errorMessages[i].innerText = "OK";
+      errorMessages[i].style.color = "green";
     }
   }
 }
 
 function checkElectricity() {
-  if (electricity.checked == false) {
+  if (!electricity.checked) {
     reportElectricity.innerText = " Не забудь!";
+    reportElectricity.style.color = "red";
+  } else {
+    reportElectricity.innerText = "OK";
+    reportElectricity.style.color = "green";
   }
 }
-validateBtn.addEventListener("click", function validate() {
+function sendBtnOn() {
+  for (let i = 0; i < errorMessages.length; i++) {
+    if (!formElements[i].validity.valueMissing || electricity.checked) {
+      submitBtn.disabled = false;
+    }
+  }
+}
+
+validateBtn.addEventListener("click", function validate(event) {
+  event.preventDefault;
   cleanReport();
   checkForm();
   checkElectricity();
+  addCustomValidityText();
+  sendBtnOn();
 });
-changeValidityText();
-// 2. Завдання:
-// Створити список справ, до якого можна:
-// - Додати новий елемент
-//  - Видалити елемент
-//  - Задати що пункт виконано
-// Методи:
-// document.createElement,
-// el.appendChild
-
-let addNewTaskBtn = document.getElementById("addNewTaskBtn");
-addNewTaskBtn.addEventListener("click", function () {
-  let todoList = document.getElementById("todoList");
-  let newTask = document.createElement("li");
-  todoList.appendChild(newTask);
-  let checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  newTask.appendChild(checkbox);
-  let todoText = document.createElement("span");
-  newTask.appendChild(todoText);
-  let newTaskAdd = document.getElementById("newTaskAdd");
-  todoText.innerText = ` ${newTaskAdd.value} `;
-  let removeBtn = document.createElement("button");
-  removeBtn.innerText = "Remove";
-  newTask.appendChild(removeBtn);
-  newTaskAdd.value = "";
-
-  removeBtn.addEventListener("click", function () {
-    removeBtn.parentElement.remove();
-  });
-
-  checkbox.addEventListener("change", function () {
-    if (checkbox.checked) {
-      todoText.style.textDecoration = "line-through";
-    }
-  });
-});
-
+sendBtnOn();
 // if (username.value == "") {
 //   username.setCustomValidity("Як тебе звати?");
 // } else {

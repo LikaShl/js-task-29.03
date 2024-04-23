@@ -3,13 +3,18 @@ body {
   box-sizing: border-box;
 }
 .container {
-  margin: 30 auto;
+  margin: 30px auto;
+  width: 60%;
 }
 .task1 {
   margin-bottom: 20px;
 }
+h2 {
+  text-align: center;
+}
 form {
   display: inline-block;
+
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 20px;
@@ -22,16 +27,12 @@ li {
 button {
   margin-right: 40px;
 }
-.errorMessage {
-  color: red;
-}
-.task2 {
-  display: inline-block;
-  margin: auto;
-}
 
 .task2 {
   display: inline-block;
   margin: auto;
   padding: 20px 50px;
+}
+.todoList button {
+  margin-left: 30px;
 }
