@@ -87,15 +87,15 @@ function sendBtnOn() {
   }
 }
 
-validateBtn.addEventListener("click", function validate(event) {
-  event.preventDefault;
+validateBtn.addEventListener("click", function validate(e) {
+  e.preventDefault;
   cleanReport();
   checkForm();
   checkElectricity();
   addCustomValidityText();
   sendBtnOn();
 });
-sendBtnOn();
+
 // if (username.value == "") {
 //   username.setCustomValidity("Як тебе звати?");
 // } else {
