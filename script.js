@@ -40,8 +40,12 @@ let errorText = [
 
 function changeValidityText() {
   for (let i = 0; i < formElements.length; i++) {
-    if (formElements[i].value == isNotValid) {
+    // if (formElements[i].value === isNotValid) {
+    if (formElements[i].value.valueMissing) { //!!!!!!!!!!!!!!!! от тут
+      
       formElements[i].setCustomValidity(errorText[i]);
+      console.log("valifity");
+      console.log(formElements[i].value)
     } else {
       formElements[i].setCustomValidity("");
     }
